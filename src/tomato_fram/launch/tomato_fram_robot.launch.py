@@ -28,7 +28,7 @@ def generate_launch_description():
     xacro_file = os.path.join(pkg_description, 'urdf', 'turtlebot3_waffle.urdf')
     rviz_config_file = os.path.join(pkg_description, 'rviz', 'robot.rviz')
     world = os.path.join(
-        pkg_description, "worlds", "tomato_fram.world"
+        pkg_description, "worlds", "without_plate_and_less_tree.world"
     )
     print(xacro_file)
     # Process Xacro file
