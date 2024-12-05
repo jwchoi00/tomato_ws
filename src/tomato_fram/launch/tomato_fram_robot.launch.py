@@ -25,14 +25,15 @@ def generate_launch_description():
     urdf_file_name = "turtlebot3_" + TURTLEBOT3_MODEL + ".urdf"
     # Paths
     pkg_description = get_package_share_directory('description')
-    xacro_file = os.path.join(pkg_description, 'urdf', 'robot_2.xacro')
+    xacro_file = os.path.join(pkg_description, 'urdf', 'turtlebot3_waffle.urdf')
     rviz_config_file = os.path.join(pkg_description, 'rviz', 'robot.rviz')
     world = os.path.join(
         pkg_description, "worlds", "tomato_fram.world"
     )
     print(xacro_file)
     # Process Xacro file
-    robot_description = xacro.process_file(xacro_file).toxml()
+    with open(xacro_file, 'r') as infp:
+        robot_description = infp.read()
 
     # Parameters
     params = {

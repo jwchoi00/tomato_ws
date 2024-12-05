@@ -1,1 +1,0 @@
-/home/g1/tomato_ws/build/tomato_fram/launch/upload_robot.launch.py
