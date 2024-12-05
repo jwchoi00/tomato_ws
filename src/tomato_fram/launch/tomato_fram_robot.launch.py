@@ -10,7 +10,7 @@ from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 def generate_launch_description():
-    
+
     ld = LaunchDescription()
 
     TURTLEBOT3_MODEL = "waffle"
@@ -30,10 +30,10 @@ def generate_launch_description():
     world = os.path.join(
         pkg_description, "worlds", "tomato_fram.world"
     )
-    print(world)
+    print(xacro_file)
     # Process Xacro file
     robot_description = xacro.process_file(xacro_file).toxml()
-    
+
     # Parameters
     params = {
         'ignore_timestamp': False,
@@ -96,12 +96,21 @@ def generate_launch_description():
         ],
         output='screen'
     )
+    Spawn_Entity_in_Gazebo_2 = Node(
+        package='gazebo_ros',
+        executable='spawn_entity.py',
+        name='spawn_entity',
+        arguments=[
+            "-file",
+            xacro_file,
+            '-entity', 'robot_2',
+            '-x', '-2', '-y', '0', '-z', '0.1',
+        ],
+        output='screen'
+    )
     ld.add_action(RViz_launch)
     ld.add_action(Robot_State_Publisher)
     ld.add_action(Joint_State_Publisher_GUI)
     ld.add_action(Spawn_Entity_in_Gazebo)
-    # Return Launch Description
-    # return LaunchDescription([
 
-    # ])
     return ld
