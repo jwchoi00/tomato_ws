@@ -13,7 +13,7 @@ def generate_launch_description():
     
     ld = LaunchDescription()
 
-    TURTLEBOT3_MODEL = "burger"
+    TURTLEBOT3_MODEL = "waffle"
     # Launch Configuration
     use_sim_time = LaunchConfiguration('use_sim_time')
     # Launch Arguments
@@ -22,7 +22,7 @@ def generate_launch_description():
     default_value='false',
     description='Use simulation time if true'
     )
-
+    urdf_file_name = "turtlebot3_" + TURTLEBOT3_MODEL + ".urdf"
     # Paths
     pkg_description = get_package_share_directory('description')
     xacro_file = os.path.join(pkg_description, 'urdf', 'robot_2.xacro')
@@ -90,7 +90,7 @@ def generate_launch_description():
         name='spawn_entity',
         arguments=[
             "-file",
-            '/home/g1/multitb_ws/src/turtlebot3_multi_robot/models/turtlebot3_waffle/model.sdf',
+            os.path.join(pkg_description,'models', 'turtlebot3_' + TURTLEBOT3_MODEL, 'model.sdf'),
             '-entity', 'robot_2',
             '-x', '-2', '-y', '0', '-z', '0.1',
         ],
