@@ -1,0 +1,17 @@
+[0.423s] Invoking command in '/home/g1/tomato_ws/build/tomato_fram': PYTHONPATH=/home/g1/tomato_ws/build/tomato_fram/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/g1/tomato_ws/install/tomato_fram/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/g1/tomato_ws/build/tomato_fram/build --no-deps symlink_data
+[0.606s] running develop
+[0.739s] running egg_info
+[0.739s] writing tomato_fram.egg-info/PKG-INFO
+[0.739s] writing dependency_links to tomato_fram.egg-info/dependency_links.txt
+[0.739s] writing entry points to tomato_fram.egg-info/entry_points.txt
+[0.739s] writing requirements to tomato_fram.egg-info/requires.txt
+[0.739s] writing top-level names to tomato_fram.egg-info/top_level.txt
+[0.740s] reading manifest file 'tomato_fram.egg-info/SOURCES.txt'
+[0.741s] writing manifest file 'tomato_fram.egg-info/SOURCES.txt'
+[0.741s] running build_ext
+[0.742s] Creating /home/g1/tomato_ws/install/tomato_fram/lib/python3.10/site-packages/tomato-fram.egg-link (link to .)
+[0.742s] Installing tomato_gui script to /home/g1/tomato_ws/install/tomato_fram/lib/tomato_fram
+[0.742s] 
+[0.742s] Installed /home/g1/tomato_ws/build/tomato_fram
+[0.742s] running symlink_data
+[0.763s] Invoked command in '/home/g1/tomato_ws/build/tomato_fram' returned '0': PYTHONPATH=/home/g1/tomato_ws/build/tomato_fram/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/g1/tomato_ws/install/tomato_fram/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/g1/tomato_ws/build/tomato_fram/build --no-deps symlink_data

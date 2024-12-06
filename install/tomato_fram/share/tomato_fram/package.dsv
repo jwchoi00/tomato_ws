@@ -1,0 +1,9 @@
+source;share/tomato_fram/hook/pythonpath.ps1
+source;share/tomato_fram/hook/pythonpath.dsv
+source;share/tomato_fram/hook/pythonpath.sh
+source;share/tomato_fram/hook/ament_prefix_path.ps1
+source;share/tomato_fram/hook/ament_prefix_path.dsv
+source;share/tomato_fram/hook/ament_prefix_path.sh
+source;../../build/tomato_fram/share/tomato_fram/hook/pythonpath_develop.ps1
+source;../../build/tomato_fram/share/tomato_fram/hook/pythonpath_develop.dsv
+source;../../build/tomato_fram/share/tomato_fram/hook/pythonpath_develop.sh

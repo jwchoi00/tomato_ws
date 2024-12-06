@@ -25,6 +25,10 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'tomato_gui = tomato_fram.tomato_gui:main',
+            'diff_driver = tomato_fram.diff_driver:main',
+            'tomato_gui_and_turtlebot_control = tomato_fram.tomato_gui_and_turtlebot_control:main',
+            'tomato_object_detect = tomato_fram.tomato_object_detect:main',
         ],
     },
 )
