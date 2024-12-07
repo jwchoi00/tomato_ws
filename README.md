@@ -3,8 +3,11 @@
 run 하는 법
 
 ros2 launch tomato_fram tomato_fram_robot.launch.py
+
 ros2 launch turtlebot3_navigation2 navigation2.launch.py map:=/home/g1/tomato_ws/src/description/map/new_tomato_map.yaml
+
 ros2 run tomato_fram tomato_object_detect
+
 ros2 run tomato_fram tomato_gui
 
 20241208 지원 수정 사항
