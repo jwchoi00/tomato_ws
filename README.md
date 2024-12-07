@@ -13,7 +13,7 @@ ros2 run tomato_fram tomato_gui
 ![Screenshot from 2024-12-07 20-35-17](https://github.com/user-attachments/assets/d6005983-f758-4ba3-9013-4dc8f5c9dad6)
 
 - nav2 안전영역 축소 /home/g1/work/turtlebot3_ws/src/turtlebot3/turtlebot3_navigation2/param/waffle.yaml
-![Screenshot from 2024-12-07 20-36-34.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/872498b9-7103-475f-aded-4c77c898ede0/0594f0ba-1119-4621-a4ca-e7c963891862/Screenshot_from_2024-12-07_20-36-34.png)
+![Screenshot from 2024-12-07 20-36-34](https://github.com/user-attachments/assets/c36092fc-4ccf-4ca9-b134-27e1d13669dc)
 
 
 로봇 spawn 하는 법
