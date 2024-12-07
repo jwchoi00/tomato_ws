@@ -15,7 +15,6 @@ def generate_launch_description():
 
     TURTLEBOT3_MODEL = "waffle"
     # Launch Configuration
-    use_sim_time = LaunchConfiguration('use_sim_time')
     # Launch Arguments
     declare_enable_drive = DeclareLaunchArgument(
     'use_sim_time',
@@ -25,22 +24,18 @@ def generate_launch_description():
     urdf_file_name = "turtlebot3_" + TURTLEBOT3_MODEL + ".urdf"
     # Paths
     pkg_description = get_package_share_directory('description')
-    xacro_file = os.path.join(pkg_description, 'urdf', 'turtlebot3_waffle.urdf')
+    urdf = os.path.join(pkg_description, 'urdf', urdf_file_name)
     rviz_config_file = os.path.join(pkg_description, 'rviz', 'robot.rviz')
     world = os.path.join(
-        pkg_description, "worlds", "new_farm_without_plate.world"
+        pkg_description, "worlds", "new_farm_small.world"
     )
-    print(xacro_file)
     # Process Xacro file
-    with open(xacro_file, 'r') as infp:
+    with open(urdf, 'r') as infp:
         robot_description = infp.read()
 
     # Parameters
-    params = {
-        'ignore_timestamp': False,
-        'robot_description': robot_description,
-        'use_sim_time': use_sim_time
-    }
+    params = {"use_sim_time": False,
+            "publish_frequency": 10.0}
 
 
     # Gazebo Launch
@@ -75,7 +70,8 @@ def generate_launch_description():
         executable='robot_state_publisher',
         name='robot_state_publisher',
         output='screen',
-        parameters=[params]
+        parameters=[params],
+        arguments=[urdf]
     )
     # Joint State Publisher GUI
     Joint_State_Publisher_GUI = Node(
@@ -93,7 +89,7 @@ def generate_launch_description():
             "-file",
             os.path.join(pkg_description,'models', 'turtlebot3_' + TURTLEBOT3_MODEL, 'model.sdf'),
             '-entity', 'robot_2',
-            '-x', '0', '-y', '-5', '-z', '0.12', "-Y", "3.14159",
+            '-x', '-1', '-y', '-1', '-z', '0.12', "-Y", "0",
         ],
         output='screen'
     )
@@ -103,15 +99,15 @@ def generate_launch_description():
     #     name='spawn_entity',
     #     arguments=[
     #         "-file",
-    #         xacro_file,
+    #         urdf,
     #         '-entity', 'robot_2',
     #         '-x', '-2', '-y', '0', '-z', '0.1', "-Y", "3.14159",
     #     ],
     #     output='screen'
     # )
-    ld.add_action(RViz_launch)
+
     ld.add_action(Robot_State_Publisher)
     #ld.add_action(Joint_State_Publisher_GUI)
     ld.add_action(Spawn_Entity_in_Gazebo)
-
+    #ld.add_action(RViz_launch)
     return ld
