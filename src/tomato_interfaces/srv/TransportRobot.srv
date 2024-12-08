@@ -1,0 +1,5 @@
+# Request
+bool gohome # 집에가
+---
+# Response
+bool succeed #집에 도착함

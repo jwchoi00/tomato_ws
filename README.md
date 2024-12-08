@@ -6,9 +6,7 @@ ros2 launch tomato_fram tomato_fram_robot.launch.py
 
 ros2 launch turtlebot3_navigation2 navigation2.launch.py map:=/home/g1/tomato_ws/src/description/map/new_tomato_map.yaml
 
-ros2 run tomato_fram tomato_object_detect
 
-ros2 run tomato_fram tomato_gui
 
 20241208 지원 수정 사항
 
@@ -27,3 +25,16 @@ ex) ros2 run gazebo_ros spawn_entity.py -file src/turtlebot3_multi_robot/models/
 map 저장시
 ros2 launch turtlebot3_cartographer cartographer.launch.py
 ros2 run nav2_map_server map_saver_cli -f ~/map
+
+
+20241208 지원 수정
+변경됨 멀티 스폰을 못했기 때문에 기존 것에 load map 변경과 turtlebot 카메라 위치 변경 nav2 yaml 변경
+ros2 launch turtlebot3_multi_robot gazebo_multi_nav2_world.launch.py 
+
+로봇을 하나식 컨트롤 하기 위해 tb1, tb2의 namespace로 설정하여 각자 통제
+
+ros2 run tomato_fram tomato_object_detect_tb1
+ros2 run tomato_fram tomato_object_detect_tb2
+
+ros2 run tomato_fram tomato_gui_tb1
+ros2 run tomato_fram tomato_gui_tb2

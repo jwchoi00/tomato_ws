@@ -16,7 +16,7 @@ class TomatoDetectionNode(Node):
     def __init__(self):
         super().__init__('tomato_detector')
         self.subscription = self.create_subscription(
-            Image, '/camera/image_raw', self.image_callback, 10
+            Image, '/tb1/camera/image_raw', self.image_callback, 10
         )
         self.publisher = self.create_publisher(Image, '/tomato/image', 10)
         self.detect_publisher = self.create_publisher(TomatoDetected, '/tomato/detected', 10)

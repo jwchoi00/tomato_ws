@@ -1,0 +1,29 @@
+running develop
+running egg_info
+creating tomato_fram.egg-info
+writing tomato_fram.egg-info/PKG-INFO
+writing dependency_links to tomato_fram.egg-info/dependency_links.txt
+writing entry points to tomato_fram.egg-info/entry_points.txt
+writing requirements to tomato_fram.egg-info/requires.txt
+writing top-level names to tomato_fram.egg-info/top_level.txt
+writing manifest file 'tomato_fram.egg-info/SOURCES.txt'
+reading manifest file 'tomato_fram.egg-info/SOURCES.txt'
+writing manifest file 'tomato_fram.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/g1/tomato_ws/src/install/tomato_fram/lib/python3.10/site-packages/tomato-fram.egg-link (link to .)
+Installing diff_driver script to /home/g1/tomato_ws/src/install/tomato_fram/lib/tomato_fram
+Installing tomato_gui script to /home/g1/tomato_ws/src/install/tomato_fram/lib/tomato_fram
+Installing tomato_object_detect script to /home/g1/tomato_ws/src/install/tomato_fram/lib/tomato_fram
+
+Installed /home/g1/tomato_ws/src/build/tomato_fram
+running symlink_data
+creating /home/g1/tomato_ws/src/install/tomato_fram/share/ament_index
+creating /home/g1/tomato_ws/src/install/tomato_fram/share/ament_index/resource_index
+creating /home/g1/tomato_ws/src/install/tomato_fram/share/ament_index/resource_index/packages
+symbolically linking /home/g1/tomato_ws/src/build/tomato_fram/resource/tomato_fram -> /home/g1/tomato_ws/src/install/tomato_fram/share/ament_index/resource_index/packages
+symbolically linking /home/g1/tomato_ws/src/build/tomato_fram/package.xml -> /home/g1/tomato_ws/src/install/tomato_fram/share/tomato_fram
+creating /home/g1/tomato_ws/src/install/tomato_fram/share/tomato_fram/launch
+symbolically linking /home/g1/tomato_ws/src/build/tomato_fram/launch/navigation2_launch.launch.py -> /home/g1/tomato_ws/src/install/tomato_fram/share/tomato_fram/launch
+symbolically linking /home/g1/tomato_ws/src/build/tomato_fram/launch/tomato_fram_robot.launch.py -> /home/g1/tomato_ws/src/install/tomato_fram/share/tomato_fram/launch
+creating /home/g1/tomato_ws/src/install/tomato_fram/share/tomato_fram/urdf
+creating /home/g1/tomato_ws/src/install/tomato_fram/share/tomato_fram/worlds

@@ -1,0 +1,1 @@
+/home/g1/tomato_ws/src/build/tomato_fram/launch/navigation2_launch.launch.py

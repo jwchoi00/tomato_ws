@@ -19,6 +19,7 @@ install(
     rviz
     worlds
     models
+    map
   DESTINATION share/${PROJECT_NAME}
 )
 

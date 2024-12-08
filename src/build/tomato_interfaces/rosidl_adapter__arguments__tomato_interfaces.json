@@ -1,0 +1,6 @@
+{
+  "package_name": "tomato_interfaces",
+  "non_idl_tuples": [
+    "/home/g1/tomato_ws/src/tomato_interfaces:msg/TomatoDetected.msg"
+  ]
+}

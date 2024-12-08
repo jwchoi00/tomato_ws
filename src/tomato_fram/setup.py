@@ -26,8 +26,12 @@ setup(
     entry_points={
         'console_scripts': [
             'tomato_gui = tomato_fram.tomato_gui:main',
+            'tomato_gui_tb1 = tomato_fram.tomato_gui_tb1:main',
+            'tomato_gui_tb2 = tomato_fram.tomato_gui_tb2:main',
             'diff_driver = tomato_fram.diff_driver:main',
             'tomato_object_detect = tomato_fram.tomato_object_detect:main',
+            'tomato_object_detect_tb1 = tomato_fram.tomato_object_detect_tb1:main',
+            'tomato_object_detect_tb2 = tomato_fram.tomato_object_detect_tb2:main',
         ],
     },
 )

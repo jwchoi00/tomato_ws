@@ -1,0 +1,12 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from tomato_interfaces/msg/TomatoDetected.msg
+// generated code does not contain a copyright notice
+
+
+module tomato_interfaces {
+  module msg {
+    struct TomatoDetected {
+      boolean detected;
+    };
+  };
+};
