@@ -26,7 +26,7 @@ def generate_launch_description():
     pkg_description = get_package_share_directory('description')
     urdf = os.path.join(pkg_description, 'urdf', urdf_file_name)
     rviz_config_file = os.path.join(pkg_description, 'rviz', 'robot.rviz')
-    world = os.path.join(pkg_description, "worlds", "new_farm_small.world")
+    world = os.path.join(pkg_description, "worlds", "new_farm_small_bricks.world")
 
     # Process Xacro file
     with open(urdf, 'r') as infp:

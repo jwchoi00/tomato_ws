@@ -87,6 +87,7 @@ class VideoPlayer(QMainWindow, form_class, Node):
             {'x': -1.5, 'y': -1.0},  # Waypoint 2
             {'x': -2.0, 'y': -1.0},  # Waypoint 3
             {'x': -2.5, 'y': -1.0},  # Waypoint 4
+            {'x': -3.0, 'y': -1.0},  # Waypoint 4
         ]
 
         # Timer for UI updates
@@ -128,18 +129,21 @@ class VideoPlayer(QMainWindow, form_class, Node):
             self.set_led_color('red')  # Red: Stopped
 
     def send_transport_robot_client(self, go_home):
-        request = TransportRobot.Request()
-        request.gohome = go_home
-        future = self.transport_go_home_client.call_async(request)  # Corrected this line
-        future.add_done_callback(self.response_callback)
+        if go_home:
+            request = TransportRobot.Request()
+            request.gohome = go_home
+            future = self.transport_go_home_client.call_async(request)
+            future.add_done_callback(self.response_callback)
 
 
     def response_callback(self, future):
         try:
             response = future.result()
             if response.succeed:
+                self.logger.error("Successfully sent to transport")
                 print("Successfully sent to transport")
             else:
+                self.logger.error("Failed to send transport")
                 print("Failed to send transport")
         except Exception as e:
             print(f"Service call failed: {e}")
@@ -158,6 +162,7 @@ class VideoPlayer(QMainWindow, form_class, Node):
             target_yaw = -135.0  # Target yaw angle in radians (facing East)
             quaternion = self.create_quaternion_from_yaw(target_yaw)
             waypoint = self.waypoints[self.current_waypoint_index]
+            self.logger.info(f"current_waypoint_index: {self.current_waypoint_index}")
             goal_msg = NavigateToPose.Goal()
             goal_msg.pose.header.frame_id = "map"
             goal_msg.pose.header.stamp = self.get_clock().now().to_msg()
@@ -171,14 +176,21 @@ class VideoPlayer(QMainWindow, form_class, Node):
             future.add_done_callback(self.goal_response_callback)
             self.is_moving = True
 
-            # Publish current position as the robot moves
-            current_position = PoseStamped()
-            current_position.header.stamp = self.get_clock().now().to_msg()
-            current_position.header.frame_id = "map"
-            current_position.pose.position.x = waypoint['x']
-            current_position.pose.position.y = waypoint['y']
-            current_position.pose.orientation = quaternion
-            self.position_publisher.publish(current_position)
+            if self.current_waypoint_index == 2: # 3번째에 도착
+                self.send_transport_robot_client(True)
+            else:
+                target_yaw = -135.0  # Target yaw angle in radians (facing East)
+                quaternion = self.create_quaternion_from_yaw(target_yaw)
+                waypoint = self.waypoints[self.current_waypoint_index]
+                # Publish current position as the robot moves
+                current_position = PoseStamped()
+                current_position.header.stamp = self.get_clock().now().to_msg()
+                current_position.header.frame_id = "map"
+                current_position.pose.position.x = waypoint['x']
+                current_position.pose.position.y = waypoint['y']
+                current_position.pose.orientation = quaternion
+                self.position_publisher.publish(current_position)
+
     def feedback_callback(self, feedback_msg):
         # Handle feedback (if needed)
         pass
@@ -205,6 +217,7 @@ class VideoPlayer(QMainWindow, form_class, Node):
             if self.tomato_detected:
                 self.logger.info('Going to harvesting mode')
                 self.is_harvesting = True
+                self.logger.info("Harvesting!!!!")
                 QTimer.singleShot(3000, self.resume_navigation)  # Wait 3 seconds
             else:
                 self.current_waypoint_index
@@ -231,11 +244,14 @@ class VideoPlayer(QMainWindow, form_class, Node):
         self.logger.info("Resuming navigation.")
         self.current_waypoint_index += 1
         if self.current_waypoint_index < len(self.waypoints):
+            
             self.send_goal()
+
         else:
             self.logger.info("All waypoints completed!")
 
     def return_home(self):
+        self.send_transport_robot_client(True)
         target_yaw = -135.0  # Target yaw angle in radians (facing East)
         quaternion = self.create_quaternion_from_yaw(target_yaw)
         goal_msg = NavigateToPose.Goal()
@@ -246,7 +262,7 @@ class VideoPlayer(QMainWindow, form_class, Node):
         goal_msg.pose.pose.orientation = quaternion
         self.logger.info(f"Sending goal: {goal_msg.pose.pose.position.x}, {goal_msg.pose.pose.position.y}")
         #service 추가
-        self.send_transport_robot_client(True)
+        
         
         if not self._context.ok():
             self.logger.error("ROS context is invalid!")
